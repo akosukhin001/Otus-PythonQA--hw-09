@@ -1,5 +1,4 @@
 from locators import AdminLoginPage
-from selenium.webdriver.common.by import By
 from time import sleep
 
 
@@ -8,28 +7,28 @@ def test_title(browser_admin_login):
 
 
 def test_panel_text(browser_admin_login):
-    text = browser_admin_login.find_element_by_css_selector(AdminLoginPage.PANEL_TEXT).text
+    text = browser_admin_login.find_element(*AdminLoginPage.PANEL_TEXT).text
     assert text == 'Please enter your login details.'
 
 
 def test_username(browser_admin_login):
-    username = browser_admin_login.find_element_by_css_selector(AdminLoginPage.USERNAME)
+    username = browser_admin_login.find_element(*AdminLoginPage.USERNAME)
     username.send_keys('admin')
     username.clear()
 
 
 def test_password(browser_admin_login):
-    password = browser_admin_login.find_element_by_css_selector(AdminLoginPage.PASSWORD)
+    password = browser_admin_login.find_element(*AdminLoginPage.PASSWORD)
     password.send_keys('bitnami1')
     password.clear()
 
 
 def test_login_button(browser_admin_login):
-    browser_admin_login.find_element_by_css_selector(AdminLoginPage.LOGIN_BTN).click()
+    browser_admin_login.find_element(*AdminLoginPage.LOGIN_BTN).click()
 
 
 def test_forgotten_password(browser_admin_login):
-    browser_admin_login.find_element_by_css_selector(AdminLoginPage.FORGOTTEN_PASSWORD).click()
+    browser_admin_login.find_element(*AdminLoginPage.FORGOTTEN_PASSWORD).click()
 
 
 def test_login_all(browser_admin_login):

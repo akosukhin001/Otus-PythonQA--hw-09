@@ -1,6 +1,5 @@
 from selenium import webdriver
 import pytest
-<<<<<<< HEAD
 from locators.AdminLoginPage import AdminLoginPage
 from time import sleep
 from selenium.common.exceptions import NoSuchElementException
@@ -9,11 +8,10 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.alert import Alert
-=======
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
->>>>>>> 59165e97e6b6a70025901f8b6551d20cac82bb76
 
 
 def pytest_addoption(parser):
@@ -21,7 +19,6 @@ def pytest_addoption(parser):
     parser.addoption('--browser', '-B', choices=['Chrome', 'Firefox'], default='Chrome')
     parser.addoption('--expl_wait', '-E', type=int, required=None, default=0, help='explicit wait in seconds')
     parser.addoption('--impl_wait', '-I', type=int, required=None, help='explicit wait in seconds')
-
 
 
 @pytest.fixture
@@ -55,7 +52,6 @@ def browser_product(request):
     print('\nexpl_wait = ', expl_wait, '\nimpl_wait = ', impl_wait)
     wd.get(url)
     wait.until(EC.title_contains('HP LP3065'))
-
 
     request.addfinalizer(wd.close)
     return wd, wait
@@ -100,6 +96,37 @@ def browser_search(request):
     return wd
 
 
+@pytest.fixture
+def admin_page_fixture(request):
+    browser = request.config.getoption('--browser')
+    url = 'http://localhost/admin/'
+    if browser == 'Chrome':
+        wd = webdriver.Chrome()
+    else:
+        wd = webdriver.Firefox()
+    wd.get(url)
+
+    username = wd.find_element(*AdminLoginPage.USERNAME)
+    username.send_keys('user')
+    password = wd.find_element(*AdminLoginPage.PASSWORD)
+    password.send_keys('bitnami1')
+    wd.find_element(*AdminLoginPage.LOGIN_BTN).click()
+    try:
+        wd.find_element_by_id("details-button").click()
+        wd.find_element_by_id("proceed-link").click()
+    except NoSuchElementException:
+        print("FF doesn't get this window")
+    # Alert(wd).accept()
+    finally:
+        wait = WebDriverWait(wd, 10)
+        el = wait.until(EC.presence_of_element_located((By.ID, 'navigation')))
+        print(el)
+
+    wd.find_element_by_id('menu-catalog').click()
+    # sleep(5)
+    products = wait.until(EC.presence_of_element_located((By.LINK_TEXT, 'Products')))
+    products.click()
+    # wd.find_element_b
 
     request.addfinalizer(wd.close)
     return wd

@@ -1,8 +1,10 @@
 from .CommonElements import CommonElements
+from .CommonElements import css
+
 
 class SearchPage(CommonElements):
-    KEYWORDS = '#input-search'
-    ALL_CATEGORIES = 'select[name="category_id"]'
-    IN_DESCR_CHECKBOX = '#description'
-    IN_SUBCAT_CHECKBOX = '[name=sub_category]'
-    SEARCH_BTN = '#button-search'
+    KEYWORDS = (css, '#input-search')
+    ALL_CATEGORIES = (css, 'select[name="category_id"]')
+    IN_DESCR_CHECKBOX = (css, '#description')
+    IN_SUBCAT_CHECKBOX = (css, '[name=sub_category]')
+    SEARCH_BTN = (css, '#button-search')
