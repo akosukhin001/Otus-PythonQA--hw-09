@@ -11,7 +11,7 @@ def test_cart(browser_params):
 
 def test_featured(browser_params):
     products = browser_params.find_elements(*MainPage.FEATURED)
-    assert len(products) == 4
+    assert len(products) == 3
 
 
 def test_promoblock(browser_params):
