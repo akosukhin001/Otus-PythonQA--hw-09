@@ -1,12 +1,14 @@
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import logging
 
 
 class BasePage():
 
     def __init__(self, wd):
         self.wd = wd
+        self.logger = logging.getLogger(type(self).__name__)
 
     def _element(self, selector: tuple, index: int = 0):
         return self.wd.find_elements(*selector)[index]
@@ -14,8 +16,11 @@ class BasePage():
     def _elements(self, selector: tuple):
         return self.wd.find_elements(*selector)
 
+    # def _click(self, selector: tuple):
+    #     ActionChains(self.wd).move_to_element(self._element(selector)).click().perform()
+
     def _click(self, selector: tuple):
-        ActionChains(self.wd).move_to_element(self._element(selector)).click().perform()
+        return self._element(selector).click()
 
     def _input(self, selector: tuple, value):
         element = self._element(selector)
