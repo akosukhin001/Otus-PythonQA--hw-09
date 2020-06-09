@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 from page_objects import BasePage
+import allure
 
 
 class CommonElements(BasePage):
@@ -12,17 +13,21 @@ class CommonElements(BasePage):
     CURRENCY = (css, '#form-currency')
 
     def click_cart(self):
-        self._click((self.CART))
-        return self
+        with allure.step("кликаем cart"):
+            self._click((self.CART))
+            return self
 
     def find_nav_links(self):
-        self._element(self.NAV_LINKS)
-        return self
+        with allure.step("ищем nav_links"):
+            self._element(self.NAV_LINKS)
+            return self
 
     def search(self):
-        self._input(self.SEARCH, 'test_input_string')
-        return self
+        with allure.step("вводим тестовую строку в поиск"):
+            self._input(self.SEARCH, 'test_input_string')
+            return self
 
     def find_currency(self):
-        self._element(self.CURRENCY)
-        return self
+        with allure.step("ищем валюту хахаха"):
+            self._element(self.CURRENCY)
+            return self

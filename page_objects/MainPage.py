@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 from page_objects import BasePage
+import allure
 
 
 class MainPage(BasePage):
@@ -13,17 +14,22 @@ class MainPage(BasePage):
     ADVPAGINATOR = (css, '.swiper-pagination.carousel0')
 
     def find_featured(self, index):
-        return self._get_element_text(self.FEATURED, index)
+        with allure.step("ищем featured"):
+            return self._get_element_text(self.FEATURED, index)
 
     def click_promoblock(self):
-        self._click(self.PROMOBLOCK)
-        return self
+        with allure.step("кликаем по промоблоку"):
+            self._click(self.PROMOBLOCK)
+            return self
 
     def find_promopaginator(self):
-        return self._element(self.PROMOPAGINATOR)
+        with allure.step("ищем промопагинатор"):
+            return self._element(self.PROMOPAGINATOR)
 
     def find_adverb(self):
-        return self._element(self.ADV)
+        with allure.step("ищем рекламный баннер"):
+            return self._element(self.ADV)
 
     def find_advpaginator(self):
-        return self._element(self.ADVPAGINATOR)
+        with allure.step("ищем рекламный пагинатор"):
+            return self._element(self.ADVPAGINATOR)

@@ -1,5 +1,6 @@
 from .BasePage import BasePage
 from selenium.webdriver.common.by import By
+import allure
 
 
 class CataloguePage(BasePage):
@@ -14,19 +15,25 @@ class CataloguePage(BasePage):
     SHOW_QTY_SELECT = (css, '#input-limit')
 
     def click_featured(self):
-        return self._click(self.FEATURED)
+        with allure.step("кликаем на featured"):
+            return self._click(self.FEATURED)
 
     def check_items_list(self):
-        return self._elements(self.ITEMS_LIST)
+        with allure.step("получение списка эл-тов"):
+            return self._elements(self.ITEMS_LIST)
 
     def click_list_view_button(self):
-        return self._click(self.LIST_VIEW_BTN)
+        with allure.step("кликаем на list_view_button"):
+            return self._click(self.LIST_VIEW_BTN)
 
     def click_grid_view_btn(self):
-        return self._click(self.GRID_VIEW_BTN)
+        with allure.step("кликаем на grid_view_btn"):
+            return self._click(self.GRID_VIEW_BTN)
 
     def check_sort_select(self):
-        return self._element(self.SORT_SELECT)
+        with allure.step("проверяем"):
+            return self._element(self.SORT_SELECT)
 
     def check_show_qty_select(self):
-        return self._element(self.SHOW_QTY_SELECT)
+        with allure.step("проверяем количество"):
+            return self._element(self.SHOW_QTY_SELECT)

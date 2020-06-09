@@ -1,6 +1,6 @@
 from selenium import webdriver
 import pytest
-from locators.AdminLoginPage import AdminLoginPage
+from page_objects.AdminLoginPage import AdminLoginPage
 from time import sleep
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.keys import Keys

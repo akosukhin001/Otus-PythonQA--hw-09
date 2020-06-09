@@ -20,28 +20,23 @@ class AdminLoginPage(BasePage):
         with allure.step("Проверяем title"):
             return self.TITLE
 
-    @pytest.mark.AdminLoginPage
     def check_panel_text(self):
-        with allure.step(""):
+        with allure.step("проверяем текст панели"):
             return self._get_element_text(self.PANEL_TEXT, 0)
 
-    @pytest.mark.AdminLoginPage
     def input_username(self, value):
-        with allure.step(""):
+        with allure.step("вводим имя пользователя"):
             return self._input(self.USERNAME, value)
 
-    @pytest.mark.AdminLoginPage
     def input_password(self, value):
-        with allure.step(""):
+        with allure.step("вводим пароль"):
             return self._input(self.PASSWORD, value)
 
-    @pytest.mark.AdminLoginPage
     def click_login_button(self):
-        with allure.step(""):
+        with allure.step("нажимаем кнопку логин"):
             return self._click(self.LOGIN_BTN)
 
-    @pytest.mark.AdminLoginPage
     def click_forgotten_password(self):
-        with allure.step(""):
+        with allure.step("проверяем/кликаем ссылку forgotten_password"):
             return self._click(self.FORGOTTEN_PASSWORD)
 
