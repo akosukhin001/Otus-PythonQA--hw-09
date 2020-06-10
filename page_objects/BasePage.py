@@ -2,12 +2,14 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import allure
+import logging
 
 
 class BasePage():
 
     def __init__(self, wd):
         self.wd = wd
+        self.logger = logging.getLogger(type(self).__name__)
 
     def _element(self, selector: tuple, index: int = 0):
         with allure.step(f"ищем элемент по селектору {selector}"):
