@@ -35,3 +35,4 @@ class CommonElements(BasePage):
         with allure.step("ищем валюту хахаха"):
             self._element(self.CURRENCY)
             return self
+

@@ -70,3 +70,4 @@ class ProductPage(BasePage):
             return self._click(self.ADD_TO_CART_BTN)
 
 
+

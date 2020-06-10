@@ -38,3 +38,4 @@ class MainPage(BasePage):
         self.logger.info('find_advpaginator')
         with allure.step("ищем рекламный пагинатор"):
             return self._element(self.ADVPAGINATOR)
+    

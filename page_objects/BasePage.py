@@ -19,9 +19,12 @@ class BasePage():
         with allure.step(f"ищем элементы по селектору {selector}"):
             return self.wd.find_elements(*selector)
 
+    # def _click(self, selector: tuple):
+    #     ActionChains(self.wd).move_to_element(self._element(selector)).click().perform()
+
     def _click(self, selector: tuple):
         with allure.step(f"кликаем по элементу - селектор {selector}"):
-            ActionChains(self.wd).move_to_element(self._element(selector)).click().perform()
+            return self._element(selector).click()
 
     def _input(self, selector: tuple, value):
         with allure.step(f"вводим {value} в элемент с селектором {selector}"):

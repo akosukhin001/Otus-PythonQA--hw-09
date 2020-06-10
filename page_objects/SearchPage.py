@@ -2,6 +2,7 @@ from .BasePage import BasePage
 from selenium.webdriver.common.by import By
 import allure
 
+
 class SearchPage(BasePage):
     css = By.CSS_SELECTOR
     link_text = By.LINK_TEXT
@@ -36,3 +37,4 @@ class SearchPage(BasePage):
         self.logger.info('click_search_button')
         with allure.step("кликаем на кнопке поиска"):
             return self._click(self.SEARCH_BTN)
+

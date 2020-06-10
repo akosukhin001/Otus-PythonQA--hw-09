@@ -43,3 +43,4 @@ class CataloguePage(BasePage):
         self.logger.info('check_show_qty_select')
         with allure.step("проверяем количество"):
             return self._element(self.SHOW_QTY_SELECT)
+
